@@ -1,0 +1,34 @@
+<?php
+
+namespace YourVendor\ContactForm\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
+use YourVendor\ContactForm\Models\ContactSubmission;
+
+class AdminNotificationMail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    public function __construct(
+        public readonly ContactSubmission $submission
+    ) {}
+
+    public function envelope(): Envelope
+    {
+        return new Envelope(
+            subject: '[New Contact] ' . $this->submission->subject,
+        );
+    }
+
+    public function content(): Content
+    {
+        return new Content(
+            view: 'contact-form::emails.admin-notification',
+            with: ['submission' => $this->submission],
+        );
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "name": "contactform/contactform",
+    "description": "A professional contact form package with admin dashboard",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Developer",
+            "email": "dev@example.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^12.0",
+        "tymon/jwt-auth": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "ContactForm\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ContactForm\\ContactFormServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
